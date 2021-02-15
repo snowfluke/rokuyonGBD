@@ -8,4 +8,6 @@ Latar belakang masalah: Tiap kali klik link di web meownime.moe dialihkan ke sho
 3. Drag dan Drop folder ekstensinya
 4. Enjoy
 
+![Instalasi](https://github.com/awalariansyah/rokuyonGBD/blob/main/instalasi.gif)
+
 
