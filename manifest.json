@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "RokuyonGBD",
+  "version": "1.0.0",
+  "description": "Base64 URL auto decode and auto redirect by Awal Ariansyah",
+
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "js": ["content.js"],
+    "matches": ["<all_urls>"]
+  }],
+  
+   "icons": {
+      "16": "yy16.png",
+      "48": "yy48.png",
+      "128": "yy128.png"
+    }
+}
