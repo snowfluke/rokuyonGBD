@@ -19,3 +19,6 @@ if (link.includes('=aHR')){
 	// Redirect ke link aslinya
 	document.location.href = decodedLink;
 }
+
+// One liner
+// !document.location.href.includes('=aHr') ? '' :  window.stop() && (document.location.href(atob(document.location.href.split('=').filter(el => el.startsWith('aHR'))[0])))
