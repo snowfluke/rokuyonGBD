@@ -1,24 +1,29 @@
-// Ngambil link web yang dibuka
-var link = document.location.href
 
-// Cek link web kalo url nya ada base 64 yg ciri2nya =aHR
-if (link.includes('=aHR')){
 
-	// Pisahin linknya ke array dengan pemisah '='
-	let linkParts = link.split('=');
+const run = () => setTimeout( () => {
 
-	// Filter array biar cuma ngambil base64nya yg aHR
-	let encodedLink = linkParts.filter( el => el.includes('aHR'));
-	 
-	// Decode linknya pake fungsi atob() bawaan JS
-	let decodedLink = atob(encodedLink);
-
-	// Stop loading webnya biar ngga redirect
-	window.stop();
-
-	// Redirect ke link aslinya
-	document.location.href = decodedLink;
+let links = document.querySelectorAll("a");
+for(let i = 0; i < links.length; i++){
+	let current = links[i]
+	if(current.href.includes("aHR")){
+	
+	let newElem = document.createElement('span');
+	newElem.innerHTML = current.innerHTML;
+	newElem.setAttribute("style", "margin:10px;color:blue;font-weight:bold;cursor:pointer;")
+	newElem.setAttribute("onmouseover", "this.style.textDecoration='underline';")
+	newElem.setAttribute("onmouseout", "this.style.textDecoration='none';")
+	
+	let url = atob(current.href
+		.split("=")
+		.filter( el => el.includes("aHR")))
+	newElem.setAttribute("onClick", `javascript:window.open('${url}'); return false;`)
+	current.parentNode.replaceChild(newElem, current);
+	}
 }
 
-// One liner
-// !document.location.href.includes('=aHr') ? '' :  window.stop() && (document.location.href(atob(document.location.href.split('=').filter(el => el.startsWith('aHR'))[0])))
+console.clear()
+console.log("%cSemua link disuntik!","color: yellow; font-family:sans-serif; font-size: 20px")
+}, 5000)
+
+
+document.addEventListener('DOMContentLoaded', run)
